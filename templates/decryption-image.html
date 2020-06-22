@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+    <center><div class="w-full h-full bg-gray-200 flex flex-col items-center box-border pt-12">
+        <h2 style=" margin-top: 30px; margin-bottom: 20px;"><span style="text-transform: uppercase;" class="str"> {{ caption }} </span> is Successfully decrypted</h2>
+        <img style="height: 520px" width="80%" src="/{{ image }}"/>
+        </div></center>
+
+    {% else %}
+        <center><h2 style="font-size: 35px; margin-top: 250px;">Page Not found </h2><span>Error 405!!!</span>
+        <h3 style="padding-top: 15px; font-size: 30px;">Login to get access</h3></center>
+    {% endif %}
+
+{% endblock %}

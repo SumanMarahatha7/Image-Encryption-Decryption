@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <main>
+        <section id="hero_section">
+            <div class="hero_text">
+                {% if user.is_authenticated %}
+                <p class="txt1">Welcome, {{user.first_name}}</p>
+                <p>Thank you <span class="str">{{user.first_name}}</span> for trusting us</p>
+                <a href="{% url 'index' %}"><button>Encrypt & Decrypt</button></a>
+                {% else %}
+                <p class="txt1">Data Security is Must</p>
+                <p>Secure Your Images</p>
+                <p><span class="str">Encrypt</span> and <span class="str">Decrypt</span> your important <span class="str">Images</span></p>
+                <a href="login"><button>Join Us Now</button></a>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+
+
+{% endblock %}

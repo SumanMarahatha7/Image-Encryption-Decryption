@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    {% if user.is_authenticated %}
+    <center>
+    <div style="margin-top: 35px; margin-right: 420px;" class="w-full h-full bg-gray-200 flex flex-col items-center justify-center box-border">
+
+        <h2 style=" margin-bottom: 30px; text-transform: uppercase; font-size: 40px;" class="font-bold text-gray-600 text-2xl mb-10">Image to Decrypt : :</h1>
+        <img class="card-image" src="{% static 'images/lock.jpg' %}" width="400px"; height="300px"; >
+        <h1 style="text-transform: uppercase; font-weight: bold;">{{ caption }}</h1>
+        <form method="post" class="h-32 flex flex-col w-full justify-around items-center">
+            {% csrf_token %}
+            {% if error %} <p class="text-red-600">{{ error }}</p> {% endif %}
+            <input autofocus type="password" name="key" class="h-12 transition ease-in-out duration-500 bg-gray-200 pl-4 border-b-4 transform w-6/12 focus:-translate-y-0 focus:scale-110 focus:bg-gray-100 focus:border-teal-400 {% if error %} border-red-600 {% else %} border-gray-500 {% endif %}" id="password" placeholder="Enter key to decrypt" value="{{ key }}"/> <span class="eye input-group-text" onclick="show()"><i style="color: black; font-size: 1.3em;" class="fas fa-eye"></i></span>
+            <button style="margin-left: 25px;" type="submit" class="bg-teal-500 hover:bg-teal-600 text-white font-bold rounded-lg mt-5 px-10 py-3">Decrypt</button>
+        </form>
+
+    </div>
+    </center>
+    {% else %}
+
+        <center><h2 style="font-size: 35px; margin-top: 250px; color: red;">Page Not found </h2><span>Error 405!!!</span>
+        <h3 style="padding-top: 15px; font-size: 30px;">Login to get access</h3></center>
+    {% endif %}
+
+{% endblock %}
+

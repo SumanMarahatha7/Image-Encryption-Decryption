@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <center><h1 style="font-weight: bold; font-size: 40px; margin-top: -10px;">Welcome, {{user.first_name}}</h1></center>
+    <div class="w-full h-full flex">
+        {% include 'encryption-form.html' %}
+        <hr style="margin-top: 15px; color: red;">
+        {% include 'encrypted-list.html' %}
+    </div>
+    {% else %}
+    <center><h2 style="margin-top: 300px; font-weight: bold; font-size: 45px; margin-left: 20px;">You must login first</h2><a href="{% url 'login' %}"><button>Login</button></a></center>
+    {% endif %}
+{% endblock %}
